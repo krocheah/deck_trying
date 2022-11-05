@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            border: none; 
+            position:absolute; 
+            clip:rect(0px, 100px, 314px, 0px);
+        }
+        img:hover{
+            clip: rect(0px, 226px, 314px, 0px);
+            z-index: 999
+        }
+    </style>
+</head>
+<body>
+    <ul style="display: grid; grid-template-columns: repeat(13, 1fr); grid-gap: 350px 0px; list-style: none;">
+    {% for card in cards %}
+        <li style="common-list-item">
+            <img src="{{card}}" alt="" style="">
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

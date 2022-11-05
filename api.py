@@ -9,17 +9,19 @@ class DeckOfCardsgApi:
 
     @staticmethod
     def get_deck_id():
-        url = BASE_URL + "new/shuffle/"
-        data = {
-            "deck_count" : COUNT
-        }
+        url = BASE_URL + f"new/shuffle/?deck_count={COUNT}"
 
-        response = requests.post(url=url, data=data)
-        json =  response.json()
+        response = requests.get(url=url)
+        return response.json()
 
-        # return {
-        #     "deck": json.get("deck_id"),
-        #     "remaining": json.get("remaining")
-        # }
+    def get_cards(deck_id, card_count):
+        url = BASE_URL + f"{deck_id}/draw/?count={card_count}"
 
-        return json
+        response = requests.get(url=url)
+        return response.json()
+
+    def set_player_hands(deck_id, cards, player_name):
+        url = BASE_URL + f"{deck_id}/pile/{player_name}/add/?cards={cards}"
+
+        response = requests.get(url=url)
+        return response.json()

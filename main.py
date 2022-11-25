@@ -6,10 +6,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    data = DeckOfCardsgApi.get_deck_id()
 
-    response = ShowCards.show_all_cards(data.get("deck_id"), data.get("remaining"))
+    deck_id = ShowCards.set_game_up()
+
+    response = ShowCards.get_player_hands(deck_id)
     print(response)
+    
     return render_template("index.html", cards=response)
 
 if __name__ == '__main__':

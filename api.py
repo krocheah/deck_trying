@@ -20,8 +20,14 @@ class DeckOfCardsgApi:
         response = requests.get(url=url)
         return response.json()
 
-    def set_player_hands(deck_id, cards, player_name):
+    def set_pile(deck_id, cards, player_name):
         url = BASE_URL + f"{deck_id}/pile/{player_name}/add/?cards={cards}"
+
+        response = requests.get(url=url)
+        return response.json()
+    
+    def get_pile(deck_id, players):
+        url = BASE_URL + f"{deck_id}/pile/Player1/list"
 
         response = requests.get(url=url)
         return response.json()
